@@ -8,20 +8,19 @@ from datetime import datetime, timedelta
 from typing import Optional
 from sqlalchemy.orm import Session
 
-# We need to import our other project modules to use them here
+# Import other project modules to use them here
 from . import database, models, schemas
 
 # --- CONFIGURATION ---
-# It's best practice to load this from an environment variable instead of hardcoding it
-SECRET_KEY = "YOUR_SUPER_SECRET_KEY"
+SECRET_KEY = "YOUR_SUPER_SECRET_KEY"  # This should be loaded from an environment variable in a real app
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 # Password Hashing Setup
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# This tells FastAPI's dependency system where to get the token from the request
-# The `tokenUrl` points to our /login endpoint
+# This tells FastAPI's dependency system where to find the token in a request.
+# The `tokenUrl` points to our /login endpoint.
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 
@@ -71,8 +70,6 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
         raise credentials_exception
     return user
 
-# This is an optional but useful dependency. You can use it in endpoints
-# to ensure the user is not only authenticated but also active.
 def get_current_active_user(current_user: models.User = Depends(get_current_user)):
     """Checks if the current user is active."""
     if not current_user.is_active:

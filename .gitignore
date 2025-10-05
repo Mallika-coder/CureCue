@@ -14,3 +14,7 @@ npm-debug.log*
 
 # Database
 curecue.db
+
+
+# Secret credentials
+google-credentials.json
