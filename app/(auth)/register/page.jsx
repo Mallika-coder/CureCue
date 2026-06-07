@@ -10,6 +10,23 @@ export default function RegisterPage() {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
+    const getPasswordStrength = (pass) => {
+        if (!pass) return { label: "", color: "", width: "0%" };
+        let score = 0;
+        if (pass.length >= 6) score++;
+        if (pass.length >= 8) score++;
+        if (/[A-Z]/.test(pass)) score++;
+        if (/[0-9]/.test(pass)) score++;
+        if (/[^A-Za-z0-9]/.test(pass)) score++;
+        if (score <= 1) return { label: "Weak", color: "bg-red-400", width: "20%" };
+        if (score <= 2) return { label: "Fair", color: "bg-orange-400", width: "40%" };
+        if (score <= 3) return { label: "Good", color: "bg-yellow-400", width: "60%" };
+        if (score <= 4) return { label: "Strong", color: "bg-emerald-400", width: "80%" };
+        return { label: "Excellent", color: "bg-emerald-600", width: "100%" };
+    };
+
+    const strength = getPasswordStrength(formData.password);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
@@ -103,11 +120,20 @@ export default function RegisterPage() {
                         <input
                             type="password"
                             required
+                            minLength={6}
                             className="w-full bg-white border border-rose-100 rounded-xl px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all font-cormorant text-lg"
                             placeholder="••••••••"
                             value={formData.password}
                             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                         />
+                        {formData.password && (
+                            <div className="mt-2">
+                                <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                    <div className={`h-full ${strength.color} transition-all duration-300`} style={{ width: strength.width }} />
+                                </div>
+                                <p className="text-xs text-slate-400 mt-1 ml-1">{strength.label}</p>
+                            </div>
+                        )}
                     </div>
 
                     <button
