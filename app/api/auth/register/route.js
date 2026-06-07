@@ -5,10 +5,32 @@ import bcrypt from 'bcryptjs';
 
 export async function POST(request) {
   try {
-    await dbConnect();
     const { name, email, password } = await request.json();
 
-    // Check if user exists
+    if (!name || !email || !password) {
+      return NextResponse.json(
+        { message: 'All fields are required' },
+        { status: 400 }
+      );
+    }
+
+    if (password.length < 6) {
+      return NextResponse.json(
+        { message: 'Password must be at least 6 characters' },
+        { status: 400 }
+      );
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { message: 'Please provide a valid email address' },
+        { status: 400 }
+      );
+    }
+
+    await dbConnect();
+
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return NextResponse.json(
