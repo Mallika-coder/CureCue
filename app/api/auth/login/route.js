@@ -3,11 +3,21 @@ import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { rateLimit } from '@/lib/rate-limit';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this'; // Fallback for dev
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this';
 
 export async function POST(request) {
   try {
+    const ip = request.headers.get('x-forwarded-for') || 'unknown';
+    const { success } = rateLimit(ip, 5, 60000);
+    if (!success) {
+      return NextResponse.json(
+        { message: 'Too many login attempts. Please wait a minute.' },
+        { status: 429 }
+      );
+    }
+
     await dbConnect();
     const { email, password } = await request.json();
 
