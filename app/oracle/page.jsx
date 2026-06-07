@@ -22,8 +22,38 @@ export default function OraclePage() {
                 },
                 "stress": {
                     cause: "The fire of specific burdens burns too bright.",
-                    suggestion: "Cooling winds of meditation.",
+                    suggestion: "Cooling winds of meditation. Practice 4-7-8 breathing.",
                     element: "Fire"
+                },
+                "sleep": {
+                    cause: "The lunar tides pull your consciousness astray.",
+                    suggestion: "Brew Valerian Root tea. Dim all lights one hour before rest.",
+                    element: "Void"
+                },
+                "anxiety": {
+                    cause: "The earth beneath your spirit trembles with unrest.",
+                    suggestion: "Ground yourself with Ashwagandha. Walk barefoot on grass.",
+                    element: "Earth"
+                },
+                "fatigue": {
+                    cause: "Your vital essence has been depleted by excess.",
+                    suggestion: "Consume iron-rich elixirs. Rest beneath sunlight for 15 minutes.",
+                    element: "Fire"
+                },
+                "digestion": {
+                    cause: "The cauldron of your stomach is unbalanced.",
+                    suggestion: "Sip warm Golden Ginger brew. Avoid cold foods after sunset.",
+                    element: "Earth"
+                },
+                "cold": {
+                    cause: "The winds of illness have breached your defenses.",
+                    suggestion: "Hot turmeric milk with black pepper. Steam inhalation with eucalyptus.",
+                    element: "Air"
+                },
+                "skin": {
+                    cause: "Toxins seek escape through your outer vessel.",
+                    suggestion: "Apply aloe vera. Increase water intake to flush impurities.",
+                    element: "Water"
                 },
                 "default": {
                     cause: "An imbalance of humors has been detected.",
