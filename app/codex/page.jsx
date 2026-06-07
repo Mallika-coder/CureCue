@@ -9,7 +9,7 @@ const MOCK_REMEDIES = [
     {
         id: "ashwagandha",
         name: "Ashwagandha",
-        description: "An ancient medicinal herb classified as an adaptogen.",
+        description: "An ancient medicinal herb classified as an adaptogen. Reduces cortisol and balances thyroid hormones.",
         elements: ["Stress", "Earth"],
         image: "🌿",
         rarity: "rare"
@@ -17,7 +17,7 @@ const MOCK_REMEDIES = [
     {
         id: "valerian",
         name: "Valerian Root",
-        description: "Known for its sedative qualities to induce sleep.",
+        description: "Known for its sedative qualities to induce deep, restorative sleep cycles.",
         elements: ["Sleep", "Air"],
         image: "🌸",
         rarity: "common"
@@ -25,9 +25,57 @@ const MOCK_REMEDIES = [
     {
         id: "ginger",
         name: "Golden Ginger",
-        description: "Warmed the stomach and dispelled cold humors.",
+        description: "Warms the stomach and dispels cold humors. Powerful anti-inflammatory.",
         elements: ["Digestion", "Fire"],
-        image: "🥨",
+        image: "🫚",
+        rarity: "uncommon"
+    },
+    {
+        id: "turmeric",
+        name: "Turmeric Elixir",
+        description: "The golden spice of life. Contains curcumin, a potent anti-inflammatory compound.",
+        elements: ["Digestion", "Fire"],
+        image: "✨",
+        rarity: "rare"
+    },
+    {
+        id: "chamomile",
+        name: "Chamomile Blossom",
+        description: "Gentle flower that calms the nervous system and eases into peaceful slumber.",
+        elements: ["Sleep", "Air"],
+        image: "🌼",
+        rarity: "common"
+    },
+    {
+        id: "lavender",
+        name: "Lavender Essence",
+        description: "Aromatic herb that dissolves tension and anxiety from the spirit.",
+        elements: ["Stress", "Air"],
+        image: "💜",
+        rarity: "uncommon"
+    },
+    {
+        id: "peppermint",
+        name: "Peppermint Leaf",
+        description: "Cooling herb that clears the mind and soothes digestive discomfort.",
+        elements: ["Digestion", "Air"],
+        image: "🍃",
+        rarity: "common"
+    },
+    {
+        id: "holy-basil",
+        name: "Holy Basil (Tulsi)",
+        description: "Sacred herb revered in Ayurveda for building resilience against stress.",
+        elements: ["Stress", "Earth"],
+        image: "🪴",
+        rarity: "rare"
+    },
+    {
+        id: "melatonin",
+        name: "Moonstone Extract",
+        description: "Mimics the body's natural sleep hormone for restful nights.",
+        elements: ["Sleep", "Earth"],
+        image: "🌙",
         rarity: "uncommon"
     },
 ];
