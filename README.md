@@ -44,8 +44,8 @@ LIVE WEBSITE: (https://curecue312.vercel.app/)
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/alchemists-grimoire.git
-    cd alchemists-grimoire
+    git clone https://github.com/Mallika-coder/CureCue.git
+    cd CureCue
     ```
 
 2.  **Install dependencies**:
