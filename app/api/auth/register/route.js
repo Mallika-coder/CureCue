@@ -7,9 +7,9 @@ export async function POST(request) {
   try {
     const { name, email, password } = await request.json();
 
-    if (!name || !email || !password) {
+    if (!email || !password) {
       return NextResponse.json(
-        { message: 'All fields are required' },
+        { message: 'Email and password are required' },
         { status: 400 }
       );
     }
@@ -34,7 +34,7 @@ export async function POST(request) {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return NextResponse.json(
-        { message: 'User already exists' },
+        { message: 'User already exists with this email' },
         { status: 400 }
       );
     }
@@ -45,7 +45,7 @@ export async function POST(request) {
 
     // Create user
     const user = await User.create({
-      name,
+      name: name || '',
       email,
       password: hashedPassword,
     });

@@ -3,8 +3,9 @@ import mongoose from 'mongoose';
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Please provide a name'],
+    required: false,
     maxlength: [60, 'Name cannot be more than 60 characters'],
+    default: '',
   },
   email: {
     type: String,

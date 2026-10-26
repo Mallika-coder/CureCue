@@ -8,7 +8,8 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this';
 
 export async function GET() {
     try {
-        const cookieStore = cookies();
+        // Next.js 14+ requires cookies() to be awaited
+        const cookieStore = await cookies();
         const token = cookieStore.get('token');
 
         if (!token) {

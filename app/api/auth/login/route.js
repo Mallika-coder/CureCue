@@ -18,14 +18,22 @@ export async function POST(request) {
       );
     }
 
-    await dbConnect();
     const { email, password } = await request.json();
+
+    if (!email || !password) {
+      return NextResponse.json(
+        { message: 'Email and password are required' },
+        { status: 400 }
+      );
+    }
+
+    await dbConnect();
 
     // Check user
     const user = await User.findOne({ email });
     if (!user) {
       return NextResponse.json(
-        { message: 'Invalid credentials' },
+        { message: 'Invalid email or password' },
         { status: 400 }
       );
     }
@@ -34,7 +42,7 @@ export async function POST(request) {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return NextResponse.json(
-        { message: 'Invalid credentials' },
+        { message: 'Invalid email or password' },
         { status: 400 }
       );
     }
